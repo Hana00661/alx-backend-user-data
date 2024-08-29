@@ -3,6 +3,7 @@
 """filtered_logger.py
 """
 
+
 import logging
 import re
 import os
@@ -34,10 +35,12 @@ class RedactingFormatter(logging.Formatter):
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
     SEPARATOR = ";"
 
+
     def __init__(self, fields: List[str] = None):
         """Constructor method"""
         super(RedactingFormatter, self).__init__(self.FORMAT)
         self.fields = fields
+
 
     def format(self, record: logging.LogRecord) -> str:
         """Filters values in incoming log records using filter_datum."""
@@ -74,6 +77,7 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     conn = mysql.connector.connect(user=username, password=password,
                                    host=host, database=database)
     return conn
+
 
 def main():
     """a database connection using get_db and retrieves all rows"""
